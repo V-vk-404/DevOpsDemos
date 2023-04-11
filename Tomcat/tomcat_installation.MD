@@ -23,15 +23,11 @@
    wget http://mirrors.fibergrid.in/apache/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz
    tar -xvzf /opt/apache-tomcat-<version>.tar.gz
    ```
-1. To deploy applications into Tomcat server we will use Host Manager
-
-By default, the Host Manager is only accessible from a browser running on the same
-machine as Tomcat. If you wish to modify this restriction, you'll need to edit the Host
-Manager's context.xml file
+1. To deploy applications into Tomcat server we will use Host ManagerBy default, the Host Manager is only accessible from a browser running on the same
+   machine as Tomcat. If you wish to modify this restriction, you'll need to edit the HostManager's context.xml file
+   > Note : Make sure you change `<allow = ".*/">
    ```sh 
    File Location: <tomcat-folder>/webapps/manager/META-INF/context.xml
-   
-   change == allow ".*"
    ```
    
 1. give executing permissions to startup.sh and shutdown.sh which are under bin. 
