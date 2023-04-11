@@ -20,32 +20,35 @@
    ```sh 
    # Create tomcat directory
    cd /opt
-   wget http://mirrors.fibergrid.in/apache/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz
-   tar -xvzf /opt/apache-tomcat-<version>.tar.gz
+   wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.87/bin/apache-tomcat-8.5.87.tar.gz
+   tar -xvzf /opt/apache-tomcat-8.5.87.tar.gz
    ```
 1. To deploy applications into Tomcat server we will use Host ManagerBy default, the Host Manager is only accessible from a browser running on the same
    machine as Tomcat. If you wish to modify this restriction, you'll need to edit the HostManager's context.xml file
    > Note : Make sure you change `<allow = ".*/">
    ```sh 
+   find -name context.xml
    File Location: <tomcat-folder>/webapps/manager/META-INF/context.xml
    ```
    
 1. give executing permissions to startup.sh and shutdown.sh which are under bin. 
    ```sh
-   chmod +x /opt/apache-tomcat-<version>/bin/startup.sh 
-   chmod +x /opt/apache-tomcat-<version>/bin/shutdown.sh
+   chmod +x /opt/apache-tomcat-8.5.87/bin/startup.sh 
+   chmod +x /opt/apache-tomcat-8.5.87/bin/shutdown.sh
    ```
    > Note: you may get below error while starting tomcat incase if you dont install Java   
    `Neither the JAVA_HOME nor the JRE_HOME environment variable is defined At least one of these environment variable is needed to run this program`
 1. create link files for tomcat startup.sh and shutdown.sh 
    ```sh
-   ln -s /opt/apache-tomcat-<version>/bin/startup.sh /usr/local/bin/tomcatup
-   ln -s /opt/apache-tomcat-<version>/bin/shutdown.sh /usr/local/bin/tomcatdown
+   ln -s /opt/apache-tomcat-8.5.87/bin/startup.sh /usr/local/bin/tomcatup
+   ln -s /opt/apache-tomcat-8.5.87/bin/shutdown.sh /usr/local/bin/tomcatdown
    tomcatup
    ```
  1. Update users information in the tomcat-users.xml file
 goto tomcat home directory and Add below users to conf/tomcat-users.xml file
    ```sh
+    find -name tomcat-users.xml
+	 
 	<role rolename="manager-gui"/>
 	<role rolename="manager-script"/>
 	<role rolename="manager-jmx"/>
