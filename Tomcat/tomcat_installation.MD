@@ -23,6 +23,17 @@
    wget http://mirrors.fibergrid.in/apache/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz
    tar -xvzf /opt/apache-tomcat-<version>.tar.gz
    ```
+1. To deploy applications into Tomcat server we will use Host Manager
+
+By default, the Host Manager is only accessible from a browser running on the same
+machine as Tomcat. If you wish to modify this restriction, you'll need to edit the Host
+Manager's context.xml file
+   ```sh 
+   File Location: <tomcat-folder>/webapps/manager/META-INF/context.xml
+   
+   change == allow ".*"
+   ```
+   
 1. give executing permissions to startup.sh and shutdown.sh which are under bin. 
    ```sh
    chmod +x /opt/apache-tomcat-<version>/bin/startup.sh 
@@ -35,6 +46,17 @@
    ln -s /opt/apache-tomcat-<version>/bin/startup.sh /usr/local/bin/tomcatup
    ln -s /opt/apache-tomcat-<version>/bin/shutdown.sh /usr/local/bin/tomcatdown
    tomcatup
+   ```
+ 1. Update users information in the tomcat-users.xml file
+goto tomcat home directory and Add below users to conf/tomcat-users.xml file
+   ```sh
+	<role rolename="manager-gui"/>
+	<role rolename="manager-script"/>
+	<role rolename="manager-jmx"/>
+	<role rolename="manager-status"/>
+	<user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+	<user username="deployer" password="deployer" roles="manager-script"/>
+	<user username="tomcat" password="s3cret" roles="manager-gui"/>
    ```
   #### Check point :
 access tomcat application from browser on port 8080  
