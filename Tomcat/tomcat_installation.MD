@@ -4,14 +4,17 @@
 ### Pre-requisites
 1. EC2 instance with Java 11
 ### Install Apache Tomcat
-Install Java
-Nexus is based on Java so you will need to install Java version 8 in your system. You can install it with the following command:
 
-apt-get install openjdk-8-jdk -y
-Once Java is installed, you can verify the installed version of Java with the following command:
 
-java -version
-
+1. Install Java
+  You can install it with the following command:
+   ```sh
+   apt-get install openjdk-8-jdk -y
+   ```
+   Once Java is installed, you can verify the installed version of Java with the following command:
+   ```
+   java -version
+   ```
 1. Download tomcat packages from  https://tomcat.apache.org/download-80.cgi onto /opt on EC2 instance
    > Note: Make sure you change `<version>` with the tomcat version which you download. 
    ```sh 
